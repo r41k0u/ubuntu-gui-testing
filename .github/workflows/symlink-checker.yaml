@@ -32,5 +32,6 @@ jobs:
               echo "something is wrong with the common symlink!"
               code=1
             fi
+            cd ..
           done
           exit $code
