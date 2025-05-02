@@ -1,7 +1,8 @@
 *** Settings ***
-Resource            ${Z}/../chromium.resource
+Resource        ${Z}/../chromium.resource
 
-Test Tags   robot:exit-on-failure
+Test Tags       robot:exit-on-failure
+
 
 *** Variables ***
 ${Z}    ${CURDIR}
@@ -9,16 +10,16 @@ ${Z}    ${CURDIR}
 
 *** Test Cases ***
 Log-in to Gnome
-	Log In
+    Log In
 
 Install Mail Client
-	Install Mail Client
+    Install Mail Client
 
 Install Chromium
-	Install Chromium
+    Install Chromium
 
 Open Chromium Mail Link
-	Open Chromium Mail Link
+    Open Chromium Mail Link
 
 Match Mail Client
-	Match Mail Client
+    Match Mail Client
