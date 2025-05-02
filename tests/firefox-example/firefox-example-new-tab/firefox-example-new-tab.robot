@@ -14,3 +14,6 @@ Log In
 
 Open Firefox
     Open Firefox
+
+Open New Tab
+    Open New Tab

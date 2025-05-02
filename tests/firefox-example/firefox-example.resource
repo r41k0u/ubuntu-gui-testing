@@ -17,4 +17,5 @@ Open Firefox
 Open New Tab
     Move Pointer To ${Y}/generic/new-tab.png
     EzClick
-    PlatformVideoInput.Match Text    New Tab    40
+    PlatformVideoInput.Match    ${Y}/firefox-example-new-tab/new-tab.png
+    # PlatformVideoInput.Match Text    New Tab    40
