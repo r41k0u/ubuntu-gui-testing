@@ -16,6 +16,23 @@ Setup
 Shell Log In
     User Log In    ubuntu    ubuntu
 
+Open Apps
+    Click On Dock App    Files
+    PlatformVideoInput.Match Text    Files
+    PlatformVideoInput.Match Text    Home
+    PlatformVideoInput.Match Text    Recent
+    Click On Dock App    App Center
+    PlatformVideoInput.Match Text    App Center
+    PlatformVideoInput.Match Text    Explore
+    PlatformVideoInput.Match Text    Featured
+
+Alt Tab
+    PlatformHid.Keys Combo    Alt    Tab
+    PlatformVideoInput.Match Text    Files
+    PlatformVideoInput.Match Text    Home
+    PlatformVideoInput.Match Text    Recent
+    Close All Windows
+
 Open Files
     Click Circle of Friends
     PlatformHid.Type String     Files

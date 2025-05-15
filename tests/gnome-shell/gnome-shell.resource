@@ -135,3 +135,23 @@ RightClick On Dock App
     [Arguments]    ${app}
     Move Pointer To Dock Icon    ${app}
     EzRightClick
+
+Try Match
+    [Documentation]    Tries to match a given image quickly, returning the match if found.
+        ...    Does nothing if no match is found instead of the usual fail.
+    [Arguments]    ${template}    ${timeout}=1
+    TRY
+        ${match}    PlatformVideoInput.Match    ${template}    ${timeout}
+        RETURN    ${match}
+    EXCEPT
+        Log To Console    Try Match failed to match
+    END
+
+Close All Windows
+    [Documentation]    Closes all open windows
+    ${match}    Try Match    ${Y}/generic/close-icon.png
+
+    WHILE    ${match}
+        Click Image    ${Y}/generic/close-icon.png
+        ${match}    Try Match    ${Y}/generic/close-icon.png
+    END
