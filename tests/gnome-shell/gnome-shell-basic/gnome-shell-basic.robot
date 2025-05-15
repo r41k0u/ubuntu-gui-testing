@@ -10,15 +10,17 @@ ${Z}    ${CURDIR}
 
 
 *** Test Cases ***
+Setup
+    Set Ocr Method     rapidocr
+
 Shell Log In
-    Log In
+    User Log In    ubuntu    ubuntu
 
 Open Files
     Click Circle of Friends
     PlatformHid.Type String     Files
     PlatformVideoInput.Match Text    Files
-    ${ret}    Create List    Return
-    PlatformHid.Keys Combo    ${ret}
+    PlatformHid.Keys Combo    Return
     PlatformVideoInput.Match Text    Recent
     PlatformVideoInput.Match Text    Starred
     Click Text    Recent
@@ -30,10 +32,8 @@ Window Switching
     Click Text   New Window
     Click Image    ${Y}/generic/nautilus.png
     PlatformVideoInput.Match Text    No Recent Files
-    ${tab}    Create List    Tab
-    PlatformHid.Keys Combo    ${tab}
-    ${ret}    Create List    Return
-    PlatformHid.Keys Combo    ${ret}
+    PlatformHid.Keys Combo    Tab
+    PlatformHid.Keys Combo    Return
 
 Notification Panel
     Move Pointer To Proportional (0.5, 0)
@@ -58,10 +58,9 @@ Workspace Switching
 Shell Lock
     Toggle System Panel
     Click Lock Button
-    ${ret}    Create List    Return
-    PlatformHid.Keys Combo    ${ret}
+    PlatformHid.Keys Combo    Return
     PlatformHid.Type String    ubuntu
-    PlatformHid.Keys Combo    ${ret}
+    PlatformHid.Keys Combo    Return
     PlatformVideoInput.Match    ${X}/circle-of-friends.png    60
 
 Shell Log Out
