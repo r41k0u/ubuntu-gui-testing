@@ -12,33 +12,27 @@ ${Y}    ${CURDIR}
 *** Keywords ***
 Toggle System Panel
     [Documentation]    Opens the top right system panel
-    Move Pointer To ${Y}/generic/system-panel.png
-    EzClick
+    Click Image    ${Y}/generic/system-panel.png
 
 Click Power Button
     [Documentation]    Click the power button in the system panel
-    Move Pointer To ${Y}/generic/power-button.png
-    EzClick
+    Click Image    ${Y}/generic/power-button.png
     # Match Text doesn't seem to work well in the dialog, so ignore for now
     # PlatformVideoInput.Match Text    "Log out..."
 
 Click Lock Button
     [Documentation]    Click the lock button in the system panel
-    Move Pointer To ${Y}/generic/lock.png
-    EzClick
+    Click Image    ${Y}/generic/lock.png
 
 Click Log Out
     [Documentation]    Click the log out button in the power system panel
-    Move Pointer To ${Y}/generic/log-out.png
-    EzClick
-    Move Pointer To ${Y}/generic/log-out-confirm.png
-    EzClick
+    Click Image    ${Y}/generic/log-out.png
+    Click Image    ${Y}/generic/log-out-confirm.png
     PlatformVideoInput.Match Text    "Not listed"
 
 Click Circle of Friends
     [Documentation]    Click the circle of friends in the dock
-    Move Pointer To ${Y}/generic/circle-of-friends.png
-    EzClick
+    Click Image    ${Y}/generic/circle-of-friends.png
     PlatformVideoInput.Match Text    "Type to search"
 
 EzRightClick
