@@ -70,3 +70,39 @@ VNC_PORT=0 yarf --platform=Vnc  # for interactive console
 VNC_PORT=0 yarf --platform=Vnc /path/to/test/suite/  # for running a test suite
 ```
 
+## Writing Your Test Plan Definitions
+
+In this section, we'll introduce the concept of test plans. In each directory under `tests/`, there may be a corresponding `plans.yaml`.
+
+Here's an example of what a `plans.yaml` should look like (you can also see an example at `tests/firefox-example/plans.yaml`):
+
+```
+---
+plans:
+    regular:
+        test_cases:
+            - "tests/application-1/application-1-basic/application-1-basic.robot"
+    extended:
+        test_cases:
+            - "tests/application-1/application-1-basic/application-1-basic.robot"
+            - "tests/application-1/application-1-edge-case/application-1-edge-case.robot"
+```
+
+In this example, we define two test plans: `regular` and `extended`. In the context of testing desktop images for Ubuntu releases, you could perhaps have test plans like `daily`, `beta`, `release-candidate`, etc.
+
+Under each plan, the `test_cases` key exists. `test_cases` is a list of file paths (from the root of the repo) that point to `.robot` script files. The idea is that, for a specific test plan, you'd want to run a list of separate test suites. This `yaml` file is consumed by [GUTS](https://github.com/canonical/gui-ubuntu-testing-system), in order to run several test suites in parallel.
+
+You do not have to have more than one plan, in fact, a directory under `tests/` doesn't *need* to include a `plans.yaml`. If the tests don't need to be run in GUTS, you can simply use `ubuntu-gui-testing` to store your tests, and run them in whatever way you choose.
+
+An important feature of the `plans.yaml` schema described above, is that tests from one application can include tests from another in their `plans.yaml`. For example, if `application-1` depends on `application-2`, the `plans.yaml` of `application-2` may include a section like the following:
+
+```
+plans:
+    ...
+    application-1-application-2-dependency:
+        test_cases:
+            - "tests/application-1/application-1-basic/application-1-basic.robot"
+            - "tests/application-2/application-2-basic/application-2-basic.robot"
+    ...
+```
+
