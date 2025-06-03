@@ -1,0 +1,3 @@
+---
+robot_files:
+    - "tests/gnome-shell/gnome-shell-basic/gnome-shell-basic.robot"
