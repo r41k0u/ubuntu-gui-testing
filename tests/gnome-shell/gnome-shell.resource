@@ -61,7 +61,7 @@ Workspace Right
     [Documentation]    Switch to the right workspace via the keyboard
     PlatformHid.Keys Combo    Super    Page_Down
 
-Move Point To Text Nth
+Move Pointer To Text Nth
     [Documentation]    Moves the pointer to the nth occurrence of the text
     [Arguments]    ${text}    ${n}
     # https://github.com/canonical/ubuntu-gui-testing/pull/5/files#diff-88f4ce867cfe634d1771f32a4f5b3ebc70348744992fc4305d79d3e422845524R68-R73
@@ -79,7 +79,7 @@ Click Text
 Click Text Nth
     [Documentation]    Left-click the nth occurence of the specified text
     [Arguments]    ${text}    ${n}
-    Move Point To Text Nth    ${text}    ${n}
+    Move Pointer To Text Nth    ${text}    ${n}
     EzClick
 
 Click Image
