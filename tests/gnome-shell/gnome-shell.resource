@@ -61,24 +61,19 @@ Workspace Right
     [Documentation]    Switch to the right workspace via the keyboard
     PlatformHid.Keys Combo    Super    Page_Down
 
-Move Pointer To Text
-    [Arguments]    ${text}
-    ${match}    PlatformVideoInput.Match Text    ${text}
-    Move Point To Text Nth    ${text}    0
-
 Move Point To Text Nth
     [Documentation]    Moves the pointer to the nth occurrence of the text
     [Arguments]    ${text}    ${n}
     # https://github.com/canonical/ubuntu-gui-testing/pull/5/files#diff-88f4ce867cfe634d1771f32a4f5b3ebc70348744992fc4305d79d3e422845524R68-R73
     ${match}    PlatformVideoInput.Match Text    ${text}
     PlatformHid.Move Pointer To Absolute
-    ...    x=${{(${match[${n}]['region'].right} + ${match[${n}]['region'].left})//2}}
-    ...    y=${{(${match[${n}]['region'].bottom} + ${match[${n}]['region'].top})//2}}
+    ...    x=${{(${match[0][${n}]['region'].right} + ${match[0][${n}]['region'].left})//2}}
+    ...    y=${{(${match[0][${n}]['region'].bottom} + ${match[0][${n}]['region'].top})//2}}
 
 Click Text
     [Documentation]    Left-click on the specified text
     [Arguments]    ${text}
-    Move Pointer To Text    ${text}
+    Move Pointer To ${text}
     EzClick
 
 Click Text Nth
