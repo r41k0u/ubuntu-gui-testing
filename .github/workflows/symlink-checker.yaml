@@ -1,6 +1,10 @@
 ---
 name: Check test suites structure
-on: push  # yamllint disable-line rule:truthy
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
   symlink-checker:
     runs-on: ubuntu-latest
