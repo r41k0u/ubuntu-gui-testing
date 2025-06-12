@@ -1,8 +1,9 @@
 *** Settings ***
-Documentation    General Gnome Shell tests
-Resource        ${Z}/../gnome-shell.resource
+Documentation       General Gnome Shell tests
 
-Test Tags       robot:exit-on-failure
+Resource            ${Z}/../gnome-shell.resource
+
+Test Tags           robot:exit-on-failure
 
 
 *** Variables ***
@@ -11,7 +12,7 @@ ${Z}    ${CURDIR}
 
 *** Test Cases ***
 Setup
-    Set Ocr Method     rapidocr
+    Set Ocr Method    rapidocr
 
 Shell Log In
     User Log In    ubuntu    ubuntu
@@ -35,7 +36,7 @@ Alt Tab
 
 Open Files
     Click Circle of Friends
-    PlatformHid.Type String     Files
+    PlatformHid.Type String    Files
     PlatformVideoInput.Match Text    Files
     PlatformHid.Keys Combo    Return
     PlatformVideoInput.Match Text    Recent
@@ -46,7 +47,7 @@ Window Switching
     Move Pointer To ${Y}/generic/nautilus.png
     EzRightClick
     PlatformVideoInput.Match Text    New Window
-    Click Text   New Window
+    Click Text    New Window
     Click Image    ${Y}/generic/nautilus.png
     PlatformVideoInput.Match Text    No Recent Files
     PlatformHid.Keys Combo    Tab

@@ -1,8 +1,7 @@
 *** Settings ***
 Documentation       Shared resources for Gnome Shell testing
 
-Library            String
-
+Library             String
 Resource            kvm.resource
 Resource            ${Y}/common/common.resource
 
@@ -90,16 +89,14 @@ Click Image
 
 Look For Text In Screen
     [Documentation]    Look for the given text on the screen without waiting, returning
-        ...    the string, or empty if nothing is found.
+    ...    the string, or empty if nothing is found.
     [Arguments]    ${target_txt}
     ${txt}    PlatformVideoInput.Read Text
     ${split}    Split String    ${txt}    \n
 
     FOR    ${t}    IN    @{split}
         ${strip}    Strip String    ${t}
-        IF    "${strip}" == "${target_txt}"
-            RETURN     "${t}"
-        END
+        IF    "${strip}" == "${target_txt}"    RETURN    "${t}"
     END
 
     RETURN    ""
@@ -110,13 +107,11 @@ Move Pointer To Dock Icon
     Move Pointer To (5, 0)
 
     ${screenshot}    Grab Screenshot    # Hacky way to get screen height
-    FOR    ${index}    IN RANGE  ${${screenshot.size[1]}/5}
+    FOR    ${index}    IN RANGE    ${${screenshot.size[1]}/5}
         Walk Pointer To (5, ${{${index}*5}})
         ${txt}    Look For Text In Screen    ${label}
 
-        IF     ${txt}
-            BREAK
-        END
+        IF    ${txt}    BREAK
     END
 
 Click On Dock App
@@ -133,7 +128,7 @@ RightClick On Dock App
 
 Try Match
     [Documentation]    Tries to match a given image quickly, returning the match if found.
-        ...    Does nothing if no match is found instead of the usual fail.
+    ...    Does nothing if no match is found instead of the usual fail.
     [Arguments]    ${template}    ${timeout}=1
     TRY
         ${match}    PlatformVideoInput.Match    ${template}    ${timeout}
