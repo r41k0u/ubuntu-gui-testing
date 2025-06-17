@@ -67,7 +67,9 @@ qemu-system-x86_64 -drive format=raw,file=ubuntu25-04.img -enable-kvm -m 8192M -
 Running yarf:
 ```
 VNC_PORT=0 yarf --platform=Vnc  # for interactive console
-VNC_PORT=0 yarf --platform=Vnc /path/to/test/suite/  # for running a test suite
+VNC_PORT=0 yarf --platform=Vnc /path/to/application/ -- --suite mysuite # for running a test suite
+# For example:
+VNC_PORT=0 yarf --platform=Vnc tests/firefox-example/ -- --suite "Firefox-Example-New-Tab"
 ```
 
 ## Writing Your Test Plan Definitions
