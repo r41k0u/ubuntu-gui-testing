@@ -15,7 +15,7 @@ Task Tags
 *** Test Cases ***
 Assert test init
     Sleep    5
-    Match    ${CURDIR}/../rpi-common/screens/plucky_mascot.jpg
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
 
 Click USB icon
     Click LEFT Button on ${CURDIR}/snapshots/templates/usb_icon.jpg
@@ -40,4 +40,4 @@ Exit folder
     Click LEFT Button on ${CURDIR}/snapshots/templates/light_cross.jpg
     Move Pointer To (100, 100)
     Sleep    5
-    Match    ${CURDIR}/../rpi-common/screens/plucky_mascot.jpg
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg

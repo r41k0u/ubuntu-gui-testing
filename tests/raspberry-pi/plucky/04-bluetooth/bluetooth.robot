@@ -15,7 +15,7 @@ Task Tags
 *** Test Cases ***
 Assert test init
     Sleep    1
-    Match    ${CURDIR}/../rpi-common/screens/plucky_mascot.jpg
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
 
 Click top right toast
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/pwr_toast.jpg
@@ -24,7 +24,7 @@ Click top right toast
 
 Go to settings
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/cog.jpg
-    Sleep    3
+    Sleep    20
     Match    ${CURDIR}/snapshots/templates/bt_tab.jpg
 
 Go to BT tab
@@ -41,5 +41,5 @@ Connect to TS BT
 
 Close window
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/close.jpg
-    Sleep    3
-    Match    ${CURDIR}/../rpi-common/screens/plucky_mascot.jpg
+    Sleep    10
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg

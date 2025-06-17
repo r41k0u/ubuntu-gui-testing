@@ -11,7 +11,7 @@ Task Tags
 *** Test Cases ***
 Assert test init
     Sleep    1
-    Match    ${CURDIR}/../rpi-common/screens/plucky_mascot.jpg
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
 
 Click top right toast
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/pwr_toast.jpg

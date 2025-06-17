@@ -11,7 +11,7 @@ Task Tags
 *** Test Cases ***
 Assert Test init
     Sleep    1
-    Match    ${CURDIR}/../rpi-common/screens/plucky_mascot.jpg
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
 
 Sleep
     Keys Combo    Meta_L    l
@@ -30,4 +30,4 @@ Desktop
     Sleep    1
     Keys Combo    Return
     Sleep    5
-    Match    ${CURDIR}/../rpi-common/screens/plucky_mascot.jpg
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg

@@ -11,13 +11,13 @@ Task Tags
 *** Test Cases ***
 Assert test init
     Sleep    1
-    Match    ${CURDIR}/../rpi-common/screens/plucky_mascot.jpg
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
 
 Open Firefox and open a new tab
     Click LEFT Button on ${CURDIR}/snapshots/templates/firefox.jpg
-    Sleep    15
+    Sleep    90
     Keys Combo    Control_L    t
-    Sleep    1
+    Sleep    10
     Match    ${CURDIR}/snapshots/templates/new_tab.jpg
 
 Run video and match first frame
@@ -33,5 +33,5 @@ Match last frame
 
 Close Firefox
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/close.jpg
-    Sleep    3
-    Match    ${CURDIR}/../rpi-common/screens/plucky_mascot.jpg
+    Sleep    10
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg

@@ -111,4 +111,4 @@ Consent Screen
 Finish Screen
     Click LEFT Button on ${CURDIR}/snapshots/templates/finish_btn.jpg
     Sleep    5
-    Match    ${CURDIR}/../rpi-common/screens/plucky_mascot.jpg
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
