@@ -36,7 +36,7 @@ Click Reboot Option
 Click Reboot Button
     [Documentation]         Click the reboot option and wait for a reboot
     Click LEFT Button on ${CURDIR}/snapshots/templates/restart_btn.jpg
-    Sleep    75
+    Sleep    100
     Match    ${CURDIR}/snapshots/screens/screen_02.jpg
 
 Login
@@ -46,5 +46,5 @@ Login
     Type String    redactedpwd
     Sleep    1
     Keys Combo    Return
-    Sleep    10
+    Sleep    20
     Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
