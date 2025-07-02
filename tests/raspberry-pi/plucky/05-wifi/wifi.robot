@@ -35,22 +35,28 @@ Go to settings
 Go to WiFi tab
     [Documentation]         Open wifi settings
     Click LEFT Button on ${CURDIR}/snapshots/templates/wifi_tab.jpg
-    Sleep    15
-    Match    ${CURDIR}/snapshots/templates/wifi_ap.jpg
+    Sleep    3
+    Match    ${CURDIR}/snapshots/templates/hidden_net.jpg
 
-Select WiFi AP
-    [Documentation]         Choose a wifi access point
-    Click LEFT Button on ${CURDIR}/snapshots/templates/wifi_ap.jpg
+Enter WiFi details
+    Click LEFT Button on ${CURDIR}/snapshots/templates/hidden_net.jpg
     Sleep    15
     Move Pointer To (100, 100)
-    Match    ${CURDIR}/snapshots/templates/pwd_dialog.jpg
-
-Enter password and connect
-    [Documentation]         Enter password and connect to AP
+    Sleep    3
+    Click LEFT Button on ${CURDIR}/snapshots/templates/ssid_inp.jpg
+    Sleep    3
+    Type String    Canonical
+    Sleep    3
+    Click LEFT Button on ${CURDIR}/snapshots/templates/sec.jpg
+    Sleep    3
+    Click LEFT Button on ${CURDIR}/snapshots/templates/wpa.jpg
+    Sleep    3
+    Click LEFT Button on ${CURDIR}/snapshots/templates/pwd_inp.jpg
+    Sleep    3
     Type String    adroitreliable
-    Sleep    1
-    Keys Combo    Return
-    Sleep    15
+    Sleep    3
+    Click LEFT Button on ${CURDIR}/snapshots/templates/connect.jpg
+    Sleep    20
     Match    ${CURDIR}/snapshots/templates/conn_cnf.jpg
 
 Close window
