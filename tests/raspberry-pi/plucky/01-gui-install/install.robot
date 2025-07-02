@@ -102,7 +102,7 @@ Langpack Download
 Setup Complete
     [Documentation]         Download langpacks
     Click LEFT Button on ${CURDIR}/snapshots/templates/start_btn.jpg
-    Sleep    20
+    Sleep    35
     Move Pointer To (100, 100)
     Match    ${CURDIR}/snapshots/screens/screen_09.jpg
 
