@@ -59,10 +59,48 @@ TBD! Need the template_factory [PR](https://github.com/canonical/yarf/pull/160) 
 
 Can use this [gist](https://gist.github.com/andersson1234/43eecdd90b02f33980500aee1ad9c183) as reference and for some helpful copy paste.
 
-Spawning VM with pre-installed desktop image:
+### Spawning a VM And Creating Images For Testing
+
+Spawning VM with pre-installed raw desktop image:
 ```
 qemu-system-x86_64 -drive format=raw,file=ubuntu25-04.img -enable-kvm -m 8192M -smp 2 -machine type=q35,accel=kvm -usbdevice tablet -vga virtio -vnc :0,share=ignore
 ```
+
+You can create a pre-installed desktop image by booting a live ISO in a vm and preserving the virtual disk you install onto. Usually with qemu VMs, these are qcow2 images. qcow2 images also take up less disk space than their raw counterparts.
+
+That'd look like this:
+
+```
+qemu-img create -f qcow2 reference.qcow2 30G
+# run the live iso
+qemu-system-x86_64 -boot once=d -cdrom /path/to/$release-desktop-amd64.iso -enable-kvm -hda /path/to/reference.qcow2 -m 8192M -smp 2 -usbdevice tablet -vga virtio
+# run through the installer and complete your install of choice, then preserve the disk image
+mv /path/to/reference.qcow2 /somewhere/safe/reference.qcow2
+# Then you can boot that VM up like so:
+qemu-system-x86_64 -drive format=qcow2,file=/somewhere/safe/reference.qcow2 -enable-kvm -m 8192M -smp 2 -machine type=q35,accel=kvm -usbdevice tablet -vga virtio
+```
+
+#### Overlay Images
+
+A helpful side note, if you have a pre-installed image, as described above, and you want to run tests on it without modifying the original disk image, you can do the following, using an overlay image:
+
+```
+# create the overlay image
+qemu-img create -o backing_file=/somewhere/safe/reference.qcow2,backing_fmt=qcow2 -f qcow2 /path/to/overlay.qcow2
+# boot the overlay image
+qemu-system-x86_64 -drive format=qcow2,file=/path/to/overlay.qcow2 -enable-kvm -m 8192M -smp 2 -machine type=q35,accel=kvm -usbdevice tablet -vga virtio
+```
+
+You can then make all the modifications you want to `overlay.qcow2` without them having any effect on `reference.qcow2`.
+
+Please take note when using an overlay image that the absolute path to the reference image is stored within the overlay image. Changing the absolute path of the reference image requires manual intervention. It is not recommended to do this.
+
+If you have downloaded an overlay image, and have a local pre-installed disk image you want to overlay it on top of, in order to debug:
+```
+qemu-img rebase -b /path/to/overlay.qcow2 /path/to/local/pre-installed.qcow2
+```
+
+### Running Yarf
 
 Running yarf:
 ```
