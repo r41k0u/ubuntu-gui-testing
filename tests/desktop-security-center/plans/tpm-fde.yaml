@@ -1,3 +1,4 @@
 ---
 robot_files:
   - "tests/desktop-security-center/desktop-security-center-tpm-fde/desktop-security-center.robot"
+  - "tests/desktop-security-center/desktop-security-center-tpm-fde-change-passphrase/desktop-security-center-tpm-fde-change-passphrase.robot"

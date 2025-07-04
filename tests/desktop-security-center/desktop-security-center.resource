@@ -35,3 +35,26 @@ Check Recovery Key
     Move Pointer To ${Y}/generic/check-recovery-key-button.png
     EzClick
     PlatformVideoInput.Match    ${Y}/generic/check-recovery-key-success.png
+
+Change Passphrase
+    [Arguments]    ${old}    ${new}
+    Move Pointer To Change passphrase...
+    EzClick
+    Move Pointer To Current Passphrase
+    EzClick
+    PlatformHid.Type String    ${old}
+    Move Pointer To New Passphrase
+    EzClick
+    PlatformHid.Type String    ${new}
+    Move Pointer To Confirm Passphrase
+    EzClick
+    PlatformHid.Type String    ${new}
+    Move Pointer To ${Y}/generic/change-button.png
+    EzClick
+    PlatformVideoInput.Match    ${Y}/generic/change-passphrase-success.png
+
+Boot With Passphrase
+    [Arguments]    ${passphrase}
+    PlatformVideoInput.Match Text    Please enter the passphrase for volume    120
+    PlatformHid.Type String    ${passphrase}
+    PlatformHid.Keys Combo    Return
