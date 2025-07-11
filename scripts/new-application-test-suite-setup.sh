@@ -72,7 +72,7 @@ printf "%s\n" "${RESOURCE_FILE_TEMPLATE}" > "${RESOURCE_FILE}"
 mkdir -p "${GENERIC_DIR}"
 touch "${EMPTY_PNG}"
 cd "${APP_DIR}" || exit
-ln -s "../../common" "common"
+ln -s "../../common/" "common"
 cd - || exit
 
 echo "All done! Created the following application directory:"
