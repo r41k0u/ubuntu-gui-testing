@@ -6,7 +6,8 @@ Resource            ${Y}/common/common.resource
 
 
 *** Variables ***
-${Y}    ${CURDIR}
+${Y}                ${CURDIR}
+${RECOVERY_KEY}     62624-10584-39666-64718-31970-44050-59829-32069
 
 
 *** Keywords ***
@@ -62,9 +63,7 @@ Update Fake Webcam
 
     # Enter correct recovery key
     PlatformHid.Keys Combo    Tab
-    PlatformHid.Type String    62624-10584-39666-64718
-    Sleep    1
-    PlatformHid.Type String    -31970-44050-59829-32069
+    PlatformHid.Type String    ${RECOVERY_KEY}
     Move Pointer To ${Y}/generic/confirm-button.png
     EzClick
     PlatformVideoInput.Match    ${Y}/generic/update-done.png    60
