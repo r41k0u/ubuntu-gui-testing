@@ -60,6 +60,7 @@ Update Fake Webcam
     Type String    -00000-00000-00000-00000
     Move Pointer To ${Y}/generic/confirm-button.png
     EzClick
+    Handle PolKit Prompt
     Match Text    Recovery key does not work
 
     # Enter correct recovery key
@@ -67,4 +68,6 @@ Update Fake Webcam
     Type String    ${RECOVERY_KEY}
     Move Pointer To ${Y}/generic/confirm-button.png
     EzClick
-    Match    ${Y}/generic/update-done.png    60
+    Match    ${Y}/generic/polkit-prompt.png
+    Type String    ubuntu
+    Keys Combo    Return
