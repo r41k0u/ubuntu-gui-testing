@@ -12,13 +12,23 @@ ${RECOVERY_KEY}     62624-10584-39666-64718-31970-44050-59829-32069
 
 *** Keywords ***
 Open Firmware Updater
-    [Documentation]         Open the firmware updater application with specific config
+    Start Application    firmware-updater
+    Match Text    Firmware Updater    60
+
+Setup Fake Webcam
+    Install Debian Package    fwupd-tests
     Open Terminal
+    Run Sudo Command In Terminal    sudo echo foo
+    Type String    sudo snap connect firmware-updater
+    Keys Combo    Shift_L    ;
+    Type String    hostfs-usr-share-installed-tests-fwupd
+    Keys Combo    Return
+    Close Terminal
 
-    Run Sudo Command In Terminal    sudo snap connect firmware-updater:hostfs-usr-share-installed-tests-fwupd
-
+Setup Mock TPM FDE Update
     # Write firmware-updater config file to make it pretend updating the fwupd
     # test device affects TPM FDE so that it triggers the recovery key dialog
+    Open Terminal
     Type String    mkdir -p snap/firmware-updater/current/.config/firmware-updater
     Keys Combo    Return
     Type String    echo 'testDeviceAffectsFde
@@ -29,9 +39,7 @@ Open Firmware Updater
     Type String    snap/firmware-updater/current/.config/firmware-updater/firmware-updater.yml
     Keys Combo    Return
     Builtin.Sleep    5
-
-    Start Application    firmware-updater
-    Match Text    Firmware Updater    60
+    Close Terminal
 
 Update Fake Webcam
     [Documentation]         Make sure fake webcam device is selected
@@ -42,6 +50,7 @@ Update Fake Webcam
     Move Pointer To ${Y}/generic/update-button.png
     EzClick
 
+Enter Recovery Key
     # Enter wrong recovery key
     Move Pointer To ${Y}/generic/passphrase-textfield.png
     EzClick
@@ -56,6 +65,11 @@ Update Fake Webcam
     Type String    ${RECOVERY_KEY}
     Move Pointer To ${Y}/generic/confirm-button.png
     EzClick
+
+Check For Successful Fake Webcam Update
+    Match    ${Y}/generic/fake-webcam-update-done.png    60
+
+Handle PolKit Prompt
     Match    ${Y}/generic/polkit-prompt.png
     Type String    ubuntu
     Keys Combo    Return
