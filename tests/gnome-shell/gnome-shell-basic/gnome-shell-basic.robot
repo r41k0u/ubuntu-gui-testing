@@ -3,7 +3,7 @@ Documentation       General Gnome Shell tests
 
 Resource            ${Z}/../gnome-shell.resource
 
-Test Tags           robot:exit-on-failure
+Test Tags           exit-on-failure
 
 
 *** Variables ***
@@ -12,12 +12,15 @@ ${Z}    ${CURDIR}
 
 *** Test Cases ***
 Setup
+    [Documentation]         Use rapidocr rather than tesseract-ocr in yarf
     Set Ocr Method    rapidocr
 
 Shell Log In
+    [Documentation]         Log in to desktop environment
     User Log In    ubuntu    ubuntu
 
 Open Apps
+    [Documentation]         Open app centre
     Click On Dock App    Files
     PlatformVideoInput.Match Text    Files
     PlatformVideoInput.Match Text    Home
@@ -28,6 +31,7 @@ Open Apps
     PlatformVideoInput.Match Text    Featured
 
 Alt Tab
+    [Documentation]         Alt tab back to Nautilus
     PlatformHid.Keys Combo    Alt    Tab
     PlatformVideoInput.Match Text    Files
     PlatformVideoInput.Match Text    Home
@@ -35,6 +39,7 @@ Alt Tab
     Close All Windows
 
 Open Files
+    [Documentation]         Open Nautilus again
     Click Circle of Friends
     PlatformHid.Type String    Files
     PlatformVideoInput.Match Text    Files
@@ -44,6 +49,7 @@ Open Files
     Click Text    Recent
 
 Window Switching
+    [Documentation]         Switch between windows of Nautilus
     Move Pointer To ${Y}/generic/nautilus.png
     EzRightClick
     PlatformVideoInput.Match Text    New Window
@@ -54,6 +60,7 @@ Window Switching
     PlatformHid.Keys Combo    Return
 
 Notification Panel
+    [Documentation]         Open the notification panel
     Move Pointer To Proportional (0.5, 0)
     EzClick
     PlatformVideoInput.Match Text    Do Not Disturb
@@ -61,6 +68,7 @@ Notification Panel
     EzClick
 
 Workspace Switching
+    [Documentation]         Switch to a new workspace, and then back again
     # Switch to right workspace with clicks
     Move Pointer To Proportional (0, 0)
     EzClick
@@ -74,6 +82,7 @@ Workspace Switching
     PlatformVideoInput.Match Text    Recent
 
 Shell Lock
+    [Documentation]         Lock the screen, and log back in
     Toggle System Panel
     Click Lock Button
     PlatformHid.Keys Combo    Return
@@ -82,6 +91,7 @@ Shell Lock
     PlatformVideoInput.Match    ${X}/circle-of-friends.png    60
 
 Shell Log Out
+    [Documentation]         Log out of desktop environment
     Toggle System Panel
     Click Power Button
     Click Log Out
