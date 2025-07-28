@@ -1,9 +1,10 @@
 ---
 repos:
-  - repo: https://github.com/MarketSquare/robotframework-tidy
-    rev: 4.16.0
+  - repo: https://github.com/MarketSquare/robotframework-robocop
+    rev: v6.0.0
     hooks:
-      - id: robotidy
+      - id: robocop
+      - id: robocop-format
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.9.0.5
     hooks:

@@ -12,6 +12,7 @@ ${RECOVERY_KEY}     62624-10584-39666-64718-31970-44050-59829-32069
 
 *** Keywords ***
 Open Firmware Updater
+    [Documentation]         Open the firmware updater application with specific config
     Open Terminal
 
     # Become root
@@ -41,7 +42,7 @@ Open Firmware Updater
     PlatformVideoInput.Match Text    Firmware Updater    60
 
 Update Fake Webcam
-    # Make sure fake webcam device is selected
+    [Documentation]         Make sure fake webcam device is selected
     Move Pointer To ${Y}/generic/fake-webcam-tile.png
     EzClick
 
