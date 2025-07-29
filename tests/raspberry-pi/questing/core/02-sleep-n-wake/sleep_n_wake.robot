@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation         Sleep from desktop environment and then wake
-Resource        kvm.resource
+Documentation       Sleep from desktop environment and then wake
+
+Resource            kvm.resource
 
 Test Tags
 ...    robot:stop-on-failure
@@ -11,28 +12,24 @@ Test Tags
 
 *** Test Cases ***
 Assert Test init
-    [Documentation]         Ensure we're ready to begin the test
-    Sleep    1
+    [Documentation]    Ensure we're ready to begin the test
     Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
 
 Sleep
-    [Documentation]         Sleep from the desktop environment
+    [Documentation]    Sleep from the desktop environment
     Keys Combo    Meta_L    l
-    Sleep    5
     Match    ${CURDIR}/../rpi-common/screens/no_signal.jpg
 
 Login Prompt
-    [Documentation]         Ensure we get back to the login prompt
+    [Documentation]    Ensure we get back to the login prompt
     Move Pointer To (100, 100)
     Sleep    1
     Click LEFT Button
-    Sleep    1
     Match    ${CURDIR}/snapshots/screens/screen_01.jpg
 
 Desktop
-    [Documentation]         Enter desktop environment
+    [Documentation]    Enter desktop environment
     Type String    redactedpwd
     Sleep    1
     Keys Combo    Return
-    Sleep    5
-    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg    15

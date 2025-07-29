@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation         Shut down the raspberry pi
-Resource        kvm.resource
+Documentation       Shut down the raspberry pi
+
+Resource            kvm.resource
 
 Test Tags
 ...    stop-on-failure
@@ -11,30 +12,25 @@ Test Tags
 
 *** Test Cases ***
 Assert test init
-    [Documentation]         Ensure we're ready to begin the test
-    Sleep    1
+    [Documentation]    Ensure we're ready to begin the test
     Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
 
 Click top right toast
-    [Documentation]         Click the top right shutdown/reboot widget
+    [Documentation]    Click the top right shutdown/reboot widget
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/pwr_toast.jpg
-    Sleep    3
     Match    ${CURDIR}/../rpi-common/screens/settings_dock.jpg
 
 Click power button
-    [Documentation]         Click power menu
+    [Documentation]    Click power menu
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/pwr_btn.jpg
-    Sleep    3
     Match    ${CURDIR}/../rpi-common/screens/pwr_opts.jpg
 
 Click Power off Option
-    [Documentation]         Click widget to power off
+    [Documentation]    Click widget to power off
     Click LEFT Button on ${CURDIR}/snapshots/templates/pwr_off_txt.jpg
-    Sleep    3
     Match    ${CURDIR}/snapshots/screens/screen_01.jpg
 
 Click Power off Button
-    [Documentation]         Click button to confirm power off
+    [Documentation]    Click button to confirm power off
     Click LEFT Button on ${CURDIR}/snapshots/templates/pwr_off_btn.jpg
-    Sleep    20
-    Match    ${CURDIR}/../rpi-common/screens/no_signal.jpg
+    Match    ${CURDIR}/../rpi-common/screens/no_signal.jpg    20

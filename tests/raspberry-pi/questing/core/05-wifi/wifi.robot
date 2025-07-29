@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation             Connect to wifi access point
-Resource        kvm.resource
+Documentation       Connect to wifi access point
+
+Resource            kvm.resource
 
 Test Tags
 ...    robot:stop-on-failure
@@ -16,51 +17,45 @@ Test Tags
 
 *** Test Cases ***
 Assert test init
-    [Documentation]         Ensure we're ready to start the test
-    Sleep    1
+    [Documentation]    Ensure we're ready to start the test
     Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
 
 Click top right toast
-    [Documentation]         Click the top right shutdown/reboot widget
+    [Documentation]    Click the top right shutdown/reboot widget
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/pwr_toast.jpg
-    Sleep    3
     Match    ${CURDIR}/../rpi-common/screens/settings_dock.jpg
 
 Go to settings
-    [Documentation]         Go to settings part of widget
+    [Documentation]    Go to settings part of widget
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/cog.jpg
-    Sleep    20
-    Match    ${CURDIR}/snapshots/templates/wifi_tab.jpg
+    Match    ${CURDIR}/snapshots/templates/wifi_tab.jpg    20
 
 Go to WiFi tab
-    [Documentation]         Open wifi settings
+    [Documentation]    Open wifi settings
     Click LEFT Button on ${CURDIR}/snapshots/templates/wifi_tab.jpg
-    Sleep    3
     Match    ${CURDIR}/snapshots/templates/hidden_net.jpg
 
 Enter WiFi details
+    [Documentation]    Enter details of the WiFi network
     Click LEFT Button on ${CURDIR}/snapshots/templates/hidden_net.jpg
-    Sleep    15
     Move Pointer To (100, 100)
-    Sleep    3
+    Match ${CURDIR}/snapshots/templates/ssid_inp.jpg
     Click LEFT Button on ${CURDIR}/snapshots/templates/ssid_inp.jpg
     Sleep    3
     Type String    Canonical
-    Sleep    3
+    Match    ${CURDIR}/snapshots/templates/sec.jpg
     Click LEFT Button on ${CURDIR}/snapshots/templates/sec.jpg
-    Sleep    3
+    Match    ${CURDIR}/snapshots/templates/wpa.jpg
     Click LEFT Button on ${CURDIR}/snapshots/templates/wpa.jpg
-    Sleep    3
+    Match    ${CURDIR}/snapshots/templates/pwd_inp.jpg
     Click LEFT Button on ${CURDIR}/snapshots/templates/pwd_inp.jpg
     Sleep    3
     Type String    adroitreliable
-    Sleep    3
+    Match    ${CURDIR}/snapshots/templates/connect.jpg
     Click LEFT Button on ${CURDIR}/snapshots/templates/connect.jpg
-    Sleep    20
-    Match    ${CURDIR}/snapshots/templates/conn_cnf.jpg
+    Match    ${CURDIR}/snapshots/templates/conn_cnf.jpg    20
 
 Close window
-    [Documentation]         Close wifi settings window
+    [Documentation]    Close wifi settings window
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/close.jpg
-    Sleep    10
-    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg    15

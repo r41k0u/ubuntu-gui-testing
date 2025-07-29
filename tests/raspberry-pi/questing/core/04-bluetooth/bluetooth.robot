@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation         Ensure we can connect to a bluetooth device
-Resource        kvm.resource
+Documentation       Ensure we can connect to a bluetooth device
+
+Resource            kvm.resource
 
 Test Tags
 ...    stop-on-failure
@@ -15,38 +16,32 @@ Test Tags
 
 *** Test Cases ***
 Assert test init
-    [Documentation]         Ensure we're ready to start the test
-    Sleep    1
+    [Documentation]    Ensure we're ready to start the test
     Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
 
 Click top right toast
-    [Documentation]         Click the top right shutdown/reboot widget
+    [Documentation]    Click the top right shutdown/reboot widget
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/pwr_toast.jpg
-    Sleep    3
     Match    ${CURDIR}/../rpi-common/screens/settings_dock.jpg
 
 Go to settings
-    [Documentation]         Open the settings GUI application
+    [Documentation]    Open the settings GUI application
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/cog.jpg
-    Sleep    20
-    Match    ${CURDIR}/snapshots/templates/bt_tab.jpg
+    Match    ${CURDIR}/snapshots/templates/bt_tab.jpg    20
 
 Go to BT tab
-    [Documentation]         Open the bluetooth settings menu
+    [Documentation]    Open the bluetooth settings menu
     Click LEFT Button on ${CURDIR}/snapshots/templates/bt_tab.jpg
-    Sleep    30
     Move Pointer To (100, 100)
-    Match    ${CURDIR}/snapshots/templates/ts_bt.jpg
+    Match    ${CURDIR}/snapshots/templates/ts_bt.jpg    30
 
 Connect to TS BT
-    [Documentation]         Connect to the available desired bluetooth device
+    [Documentation]    Connect to the available desired bluetooth device
     Click LEFT Button on ${CURDIR}/snapshots/templates/ts_bt.jpg
     Move Pointer To (100, 100)
-    Sleep    30
-    Match    ${CURDIR}/snapshots/templates/conn_cnf.jpg
+    Match    ${CURDIR}/snapshots/templates/conn_cnf.jpg    30
 
 Close window
-    [Documentation]         Close the settings application
+    [Documentation]    Close the settings application
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/close.jpg
-    Sleep    10
-    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg    15

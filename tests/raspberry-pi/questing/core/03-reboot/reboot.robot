@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation         Reboot
-Resource        kvm.resource
+Documentation       Reboot
+
+Resource            kvm.resource
 
 Test Tags
 ...    robot:stop-on-failure
@@ -11,40 +12,34 @@ Test Tags
 
 *** Test Cases ***
 Assert test init
-    [Documentation]         Ensure we're ready to start the test
-    Sleep    1
+    [Documentation]    Ensure we're ready to start the test
     Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
 
 Click top right toast
-    [Documentation]         Click the top right shutdown/reboot widget
+    [Documentation]    Click the top right shutdown/reboot widget
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/pwr_toast.jpg
-    Sleep    3
     Match    ${CURDIR}/../rpi-common/screens/settings_dock.jpg
 
 Click power button
-    [Documentation]         Click the power button
+    [Documentation]    Click the power button
     Click LEFT Button on ${CURDIR}/../rpi-common/templates/pwr_btn.jpg
-    Sleep    3
     Match    ${CURDIR}/../rpi-common/screens/pwr_opts.jpg
 
 Click Reboot Option
-    [Documentation]         Open reboot option
+    [Documentation]    Open reboot option
     Click LEFT Button on ${CURDIR}/snapshots/templates/restart_txt.jpg
-    Sleep    3
     Match    ${CURDIR}/snapshots/screens/screen_01.jpg
 
 Click Reboot Button
-    [Documentation]         Click the reboot option and wait for a reboot
+    [Documentation]    Click the reboot option and wait for a reboot
     Click LEFT Button on ${CURDIR}/snapshots/templates/restart_btn.jpg
-    Sleep    100
-    Match    ${CURDIR}/snapshots/screens/screen_02.jpg
+    Match    ${CURDIR}/snapshots/screens/screen_02.jpg    100
 
 Login
-    [Documentation]         Log in to desktop environment
+    [Documentation]    Log in to desktop environment
     Keys Combo    Return
     Sleep    1
     Type String    redactedpwd
     Sleep    1
     Keys Combo    Return
-    Sleep    20
-    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg    20

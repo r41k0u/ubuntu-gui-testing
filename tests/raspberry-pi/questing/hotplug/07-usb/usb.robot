@@ -1,6 +1,7 @@
 *** Settings ***
-Documentation         Check files can be read and opened from usb via desktop environment & applications
-Resource        kvm.resource
+Documentation       Check files can be read and opened from usb via desktop environment & applications
+
+Resource            kvm.resource
 
 Test Tags
 ...    robot:stop-on-failure
@@ -15,35 +16,30 @@ Test Tags
 
 *** Test Cases ***
 Assert test init
-    [Documentation]         Ensure we're ready to start the test
-    Sleep    5
+    [Documentation]    Ensure we're ready to start the test
     Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
 
 Click USB icon
-    [Documentation]         Click the usb icon in the sidebar
+    [Documentation]    Click the usb icon in the sidebar
     Click LEFT Button on ${CURDIR}/snapshots/templates/usb_icon.jpg
     Move Pointer To (100, 100)
-    Sleep    10
-    Match    ${CURDIR}/snapshots/screens/screen_01.jpg
+    Match    ${CURDIR}/snapshots/screens/screen_01.jpg    15
 
 Click Ubuntu logo
-    [Documentation]         Click the ubuntu logo and open the image
+    [Documentation]    Click the ubuntu logo and open the image
     Click LEFT Button on ${CURDIR}/snapshots/templates/svg_icon.jpg
     Click LEFT Button
     Move Pointer To (100, 100)
-    Sleep    5
     Match    ${CURDIR}/snapshots/templates/final_img.jpg
 
 Exit image viewer
-    [Documentation]         Close the image viewer
+    [Documentation]    Close the image viewer
     Click LEFT Button on ${CURDIR}/snapshots/templates/dark_cross.jpg
     Move Pointer To (100, 100)
-    Sleep    5
     Match    ${CURDIR}/snapshots/screens/screen_01.jpg
 
 Exit folder
-    [Documentation]         Close Nautilus
+    [Documentation]    Close Nautilus
     Click LEFT Button on ${CURDIR}/snapshots/templates/light_cross.jpg
     Move Pointer To (100, 100)
-    Sleep    5
-    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg
+    Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg    15
