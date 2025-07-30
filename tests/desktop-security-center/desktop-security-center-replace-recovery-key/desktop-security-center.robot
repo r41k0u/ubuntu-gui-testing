@@ -20,5 +20,5 @@ Open Disk Encryption Tab
     Open Disk Encryption Tab
 
 Test Replace Recovery Key
-    ${first_part}    ${second_part}=    Replace Recovery Key
-    Test Unlock With Recovery Key    ${first_part}    ${second_part}
+    ${recovery_key}=    Replace Recovery Key
+    Test Unlock With Recovery Key    ${recovery_key}

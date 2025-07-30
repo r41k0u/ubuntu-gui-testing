@@ -17,12 +17,7 @@ Open Security Center
     Open Terminal
 
     # Open Security Center via sudo
-    PlatformHid.Type String    sudo /snap/desktop-security-center/current/bin/security
-    PlatformHid.Keys Combo    Shift_L    -
-    PlatformHid.Type String    center
-    PlatformHid.Keys Combo    Return
-    PlatformVideoInput.Match Text    [sudo] password
-    PlatformHid.Type String    ubuntu
+    PlatformHid.Type String    desktop-security-center
     PlatformHid.Keys Combo    Return
 
 Open Disk Encryption Tab
@@ -76,17 +71,28 @@ Check Recovery Key Failure
 Replace Recovery Key
     Move Pointer to Replace
     EzClick
+    Authenticate With Polkit
     ${text}=    Read Text
-    ${recovery_key_text}=    String.Get Line    ${text}    -7
+
+    # Catch the recovery key line
+    ${recovery_key_text}=    String.Get Line    ${text}    -11
+
+    # String whitespace
     ${recovery_key}=    Replace String    ${recovery_key_text}    ${space}    ${empty}
-    Log To Console    ${recovery_key}
-    # Split at character 23 and strip whitespace
-    ${first_part}=    Get Substring    ${recovery_key}    0    23
-    ${second_part}=    Get Substring    ${recovery_key}    23
-    ${first_part}=    Strip String    ${first_part}
-    ${second_part}=    Strip String    ${second_part}
-    Log    First part: "${first_part}"
-    Log    Second part: "${second_part}"
+   
+    # QR code generates and shows recovery key
+    Move Pointer to "Show QR code"
+    EzClick
+    PlatformVideoInput.Match Text    ${recovery_key}
+    Move Pointer To ${Y}/generic/cross-button.png
+    EzClick
+
+    # We can save to a file
+    Move Pointer to "Save to file"
+    EzClick
+    Move Pointer To ${Y}/generic/save-orange.png
+    EzClick
+
     Move Pointer to "I saved"
     EzCLick
     Move Pointer To ${Y}/generic/replace-recovery-key-button.png
@@ -94,17 +100,31 @@ Replace Recovery Key
     PlatformVideoInput.Match    ${Y}/generic/replace-recovery-key-success.png
     Move Pointer To ${Y}/generic/cross-button.png
     EzCLick
-    RETURN    ${first_part}    ${second_part}
+    Move Pointer To ${Y}/generic/cross-button.png
+    EzCLick
+
+    # cat recovery-key.txt to validate we saved the key
+    PlatformHid.Type String    cat /home/ubuntu/recovery-key.txt 
+    PlatformHid.Keys Combo    Return
+    PlatformVideoInput.Match Text    ${recovery_key}
+
+    RETURN    ${recovery_key}
 
 Test Unlock With Recovery Key
-    [Arguments]    ${first_part}    ${second_part}
+    [Arguments]    ${recovery_key}
     Start Application    reboot
     Sleep    25
     PlatformVideoInput.Match Text    "Please enter the passphrase"
     PlatformHid.Keys Combo    Return
     PlatformVideoInput.Match Text    "Please enter the recovery"
-    PlatformHid.Type String    ${first_part}
-    Sleep    1
-    PlatformHid.Type String    ${second_part}
+    PlatformHid.Type String    ${recovery_key}
     PlatformHid.Keys Combo    Return
     Log In
+
+Authenticate With Polkit
+    PlatformVideoInput.Match Text    "Authentication Required"
+    Move Pointer To Password
+    EzCLick
+    PlatformHid.Type String    ubuntu
+    Move Pointer To Authenticate
+    EzCLick
