@@ -18,20 +18,16 @@ jobs:
           dirs=$(ls)
           for dr in $dirs; do
             cd $dr;
-            ls *.resource
+            find . -name *".resource" | grep .
             if [[ $? != "0" ]]; then
               echo "No resource file under $dr!"
               code=1
             fi
-            subdirs=$(ls -d -- */ | grep -v common | grep -v generic | \
-                      grep -v plans)
-            for subdr in $subdirs; do
-              ls $subdr/*.robot
-              if [[ $? != "0" ]]; then
-                echo "no robot file under $subdr!"
-                code=1
-              fi
-            done
+            find . -name *".robot" | grep .
+            if [[ $? != "0" ]]; then
+              echo "No robot files under $dr!"
+              code=1
+            fi
             common_info=$(stat common)
             if [[ $common_info != *"common -> ../../common/"* ]]; then
               echo "something is wrong with the common symlink!"
