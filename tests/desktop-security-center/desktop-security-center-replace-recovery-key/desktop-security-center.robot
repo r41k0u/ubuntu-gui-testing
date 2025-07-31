@@ -1,5 +1,4 @@
 *** Settings ***
-
 Resource        ${Z}/../desktop-security-center.resource
 
 Test Tags       robot:exit-on-failure
