@@ -271,6 +271,16 @@ Entire Disk With ZFS
     Move Pointer To ${T}/generic/next.png
     EzClick
 
+Restart Stream And Wait For Login
+    [Documentation]         Restart stream and wait for the login screen
+    FOR    ${_}    IN RANGE    120
+        Restart Video Input
+        ${match}                Run Keyword And Return Status
+        ...                     Match       ${T}/generic/login-prompt.png       15
+        IF    ${match}    BREAK
+    END
+    IF    not ${match}    Fail    No match found
+
 Wait For Reboot To Finish
     [Documentation]    Login Prompt
     ${combo}    Create List    Return
