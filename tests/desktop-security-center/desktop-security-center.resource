@@ -3,8 +3,8 @@ Documentation       Shared resources for application testing
 
 Resource            kvm.resource
 Resource            ${Y}/common/common.resource
-Library             String
 Library             OperatingSystem
+Library             String
 
 
 *** Variables ***
@@ -78,26 +78,21 @@ Replace Recovery Key
     EzClick
     Authenticate With Polkit
     ${text}=    Read Text
-
     # Catch the recovery key line
     ${recovery_key_text}=    String.Get Line    ${text}    -11
-
     # String whitespace
     ${recovery_key}=    Replace String    ${recovery_key_text}    ${space}    ${empty}
-
     # QR code generates and shows recovery key
     Move Pointer to "Show QR code"
     EzClick
     PlatformVideoInput.Match Text    ${recovery_key}
     Move Pointer To ${Y}/generic/cross-button.png
     EzClick
-
     # We can save to a file
     Move Pointer to "Save to file"
     EzClick
     Move Pointer To ${Y}/generic/save-orange.png
     EzClick
-
     Move Pointer to "I saved"
     EzCLick
     Move Pointer To ${Y}/generic/replace-recovery-key-button.png
@@ -107,12 +102,10 @@ Replace Recovery Key
     EzCLick
     Move Pointer To ${Y}/generic/cross-button.png
     EzCLick
-
     # cat recovery-key.txt to validate we saved the key
     PlatformHid.Type String    cat /home/ubuntu/recovery-key.txt
     PlatformHid.Keys Combo    Return
     PlatformVideoInput.Match Text    ${recovery_key}
-
     RETURN    ${recovery_key}
 
 Test Unlock With Recovery Key
