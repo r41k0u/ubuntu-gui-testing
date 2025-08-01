@@ -9,7 +9,7 @@ Library             String
 
 *** Variables ***
 ${Y}                ${CURDIR}
-${RECOVERY_KEY}     27923-40354-64135-46675-37087-49770-10618-41883
+${DEFAULT_RECOVERY_KEY}     27923-40354-64135-46675-37087-49770-10618-41883
 
 
 *** Keywords ***
@@ -28,12 +28,14 @@ Open Disk Encryption Tab
 Check Recovery Key Success
     [Documentation]    Check a valid recovery key in the Security Center
     Move Pointer To Check
+    ${RECOVERY_KEY}=    Get Variable Value    ${recovery_key}    ${DEFAULT_RECOVERY_KEY}
     EzClick
     Move Pointer To XXXX
     EzClick
     PlatformHid.Type String    ${RECOVERY_KEY}
     Move Pointer To ${Y}/generic/check-recovery-key-button.png
     EzClick
+    Authenticate With Polkit
     PlatformVideoInput.Match    ${Y}/generic/check-recovery-key-success.png
 
 Change Passphrase
@@ -70,6 +72,7 @@ Check Recovery Key Failure
     PlatformHid.Type String    00000-00000-00000-00000-00000-00000-00000-00000
     Move Pointer To ${Y}/generic/check-recovery-key-button.png
     EzClick
+    Authenticate With Polkit
     PlatformVideoInput.Match    ${Y}/generic/check-recovery-key-failure.png
 
 Replace Recovery Key
@@ -112,8 +115,7 @@ Test Unlock With Recovery Key
     [Documentation]    Reboot the system and boot using the recovery key
     [Arguments]    ${recovery_key}
     Start Application    reboot
-    Sleep    25
-    PlatformVideoInput.Match Text    "Please enter the passphrase"
+    Wait Until Keyword Succeeds    25 seconds    3 seconds    PlatformVideoInput.Match Text    "Please enter the passphrase"
     PlatformHid.Keys Combo    Return
     PlatformVideoInput.Match Text    "Please enter the recovery"
     PlatformHid.Type String    ${recovery_key}

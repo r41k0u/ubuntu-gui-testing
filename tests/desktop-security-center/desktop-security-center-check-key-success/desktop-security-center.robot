@@ -3,7 +3,7 @@ Documentation       Check a valid recovery key is recognized as valid
 
 Resource            ${Z}/../desktop-security-center.resource
 
-Test Tags           exit-on-failure
+Test Tags           robot:exit-on-failure    # robocop: off=tag-with-reserved-word
 
 
 *** Variables ***

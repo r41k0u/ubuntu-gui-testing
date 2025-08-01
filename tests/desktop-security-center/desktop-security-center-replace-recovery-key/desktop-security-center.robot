@@ -3,7 +3,7 @@ Documentation       Replace the recovery key and reboot the system using the rep
 
 Resource            ${Z}/../desktop-security-center.resource
 
-Test Tags           exit-on-failure
+Test Tags           robot:exit-on-failure    # robocop: off=tag-with-reserved-word
 
 
 *** Variables ***
