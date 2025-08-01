@@ -1,0 +1,29 @@
+*** Settings ***
+Documentation       Replace the recovery key and reboot the system using the replacement
+
+Resource            ${Z}/../desktop-security-center.resource
+
+Test Tags           robot:exit-on-failure    # robocop: off=tag-with-reserved-word
+
+
+*** Variables ***
+${Z}    ${CURDIR}
+
+
+*** Test Cases ***
+Log In
+    [Documentation]    Log into ubuntu user
+    Log In
+
+Open Security Center
+    [Documentation]    Open the Security Center from the cli
+    Open Security Center
+
+Open Disk Encryption Tab
+    [Documentation]    Open the disk encryption tab in the Security Center
+    Open Disk Encryption Tab
+
+Test Replace Recovery Key
+    [Documentation]    Test replacing a recovery key, then rebooting using it
+    ${recovery_key}=    Replace Recovery Key
+    Test Unlock With Recovery Key    ${recovery_key}

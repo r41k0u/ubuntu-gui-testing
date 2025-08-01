@@ -1,0 +1,7 @@
+---
+robot_files:
+  - "tests/desktop-security-center/desktop-security-center-tpm-fde/desktop-security-center.robot"
+  - "tests/desktop-security-center/desktop-security-center-tpm-fde-change-passphrase/desktop-security-center-tpm-fde-change-passphrase.robot"
+  - "tests/desktop-security-center/desktop-security-center-check-key-success/desktop-security-center.robot"
+  - "tests/desktop-security-center/desktop-security-center-check-key-failure/desktop-security-center.robot"
+  - "tests/desktop-security-center/desktop-security-center-replace-recovery-key/desktop-security-center.robot"
