@@ -28,7 +28,7 @@ APP_NAME="${1}"
 ROBOT_FILE_TEMPLATE="""*** Settings ***
 Resource        \${Z}/../${APP_NAME}.resource
 
-Test Tags       robot:exit-on-failure
+Test Tags       robot:exit-on-failure    # robocop: off=tag-with-reserved-word
 
 
 *** Variables ***
