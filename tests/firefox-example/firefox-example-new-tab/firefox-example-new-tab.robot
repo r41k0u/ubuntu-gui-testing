@@ -2,7 +2,7 @@
 Documentation           Log in, open Firefox, open a new tab
 Resource        ${Z}/../firefox-example.resource
 
-Test Tags       exit-on-failure
+Test Tags           robot:exit-on-failure    # robocop: off=tag-with-reserved-word
 
 
 *** Variables ***

@@ -2,7 +2,7 @@
 Documentation         Basic tests for the Multipass snap
 Resource        ${Z}/../multipass.resource
 
-Test Tags       exit-on-failure
+Test Tags           robot:exit-on-failure    # robocop: off=tag-with-reserved-word
 
 
 *** Variables ***
