@@ -12,7 +12,7 @@ Test Tags
 # - I make the following assumptions:
 #    + The WiFi scanning is enabled by default on the DUT.
 #    + It is not connected to any WiFi network.
-#    + A WiFi AP named "Canonical" with password "adroitreliable" is available.
+#    + A WiFi AP named "Canonical" is available.
 
 
 *** Test Cases ***
@@ -50,7 +50,7 @@ Enter WiFi details
     Match    ${CURDIR}/snapshots/templates/pwd_inp.jpg
     Click LEFT Button on ${CURDIR}/snapshots/templates/pwd_inp.jpg
     Sleep    3
-    Type String    adroitreliable
+    Type String    ${CANONICAL_WIFI_PWD}
     Match    ${CURDIR}/snapshots/templates/connect.jpg
     Click LEFT Button on ${CURDIR}/snapshots/templates/connect.jpg
     Match    ${CURDIR}/snapshots/templates/conn_cnf.jpg    20
