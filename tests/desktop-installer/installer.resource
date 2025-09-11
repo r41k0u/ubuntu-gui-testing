@@ -135,7 +135,7 @@ Encryption And File System Zfs Encryption
     ${matches}      Match Text        Encrypt with a passphrase using ZFS       20
     # for some reason, this indexing seems to differ from interactive terminal to in this resource file?
     # an extra [0]? weird, keep an eye on it. Will be solved by yarf PR anyway
-    PlatformHid.Move Pointer To Absolute    ${matches[0][0]['region'].left}      ${matches[0][0]['region'].top}
+    Move Pointer To Absolute    ${matches[0][0]['region'].left}      ${matches[0][0]['region'].top}
     # Move Pointer To ${T}/generic/encryption-and-file-system-show-advanced-zfs-encryption.png
     EzClick
     Move Pointer To ${T}/generic/next.png
