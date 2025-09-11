@@ -17,16 +17,16 @@ Install Multipass
 Open Multipass
     [Documentation]    Open Multipass and verify that it has loaded
     Start Application    /snap/bin/multipass.gui
-    PlatformVideoInput.Match Text    Multipass
-    PlatformVideoInput.Match Text    Welcome to Multipass
-    PlatformVideoInput.Match Text    Get an instant VM or application in seconds
+    Match Text    Multipass
+    Match Text    Welcome to Multipass
+    Match Text    Get an instant VM or application in seconds
 
 Verify No Instances
     [Documentation]    Verify that there are no instances currently, starting from the catalogue screen.
     Move Pointer To ${Y}/generic/instances.png
-    PlatformVideoInput.Match Text    Instances
+    Match Text    Instances
     EzClick
-    PlatformVideoInput.Match Text    Zero Intances
+    Match Text    Zero Intances
     Move Pointer To ${Y}/generic/catalogue.png
     EzClick
 
@@ -40,28 +40,28 @@ Launch Instance
     [Documentation]    Launch a random instance and ensure it ends up in a running state
     Move Pointer To ${y}/generic/launch.png
     EzClick
-    PlatformVideoInput.Match Text    Launching
-    PlatformVideoInput.Match Text    Downloading Image
+    Match Text    Launching
+    Match Text    Downloading Image
     Move Pointer To ${y}/generic/instance-details.png
     EzClick
     Move Pointer To Proportional (0, 0)
     Wait Until Keyword Succeeds
     ...    600 seconds
     ...    5 seconds
-    ...    PlatformVideoInput.Match
+    ...    Match
     ...    ${y}/generic/instance-details-running.png
 
 Return to Catalogue
     [Documentation]    Return to the Catalogue from Instances
     Move Pointer To ${Y}/generic/catalogue.png
-    PlatformVideoInput.Match Text    Catalogue
+    Match Text    Catalogue
     EzClick
-    PlatformVideoInput.Match Text    Welcome to Multipass
+    Match Text    Welcome to Multipass
 
 Delete Single Instance
     [Documentation]    Delete a single existing instance
     Move Pointer To ${Y}/generic/instances-1.png
-    PlatformVideoInput.Match Text    Instances
+    Match Text    Instances
     EzClick
     Move Pointer To Proportional (0, 0)
     Move Pointer To ${Y}/generic/instances-checkbox.png
@@ -71,7 +71,7 @@ Delete Single Instance
     BuiltIn.Sleep    1
     Move Pointer To ${Y}/generic/instances-delete.png
     EzClick
-    Wait Until Keyword Succeeds    15 seconds    3 seconds    PlatformVideoInput.Match Text    Zero Instances
+    Wait Until Keyword Succeeds    15 seconds    3 seconds    Match Text    Zero Instances
 
 Close Multipass
     [Documentation]    Close Multipass
@@ -82,5 +82,5 @@ Close Multipass
     ...    2 seconds
     ...    Run Keyword And Expect Error
     ...    *
-    ...    PlatformVideoInput.Match Text
+    ...    Match Text
     ...    Multipass

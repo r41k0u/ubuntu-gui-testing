@@ -13,7 +13,7 @@ ${Y}    ${CURDIR}
 Open Chromium
     [Documentation]         Open chromium browser
     Start Application    /snap/bin/chromium
-    PlatformVideoInput.Match Text    New Tab
+    Match Text    New Tab
 
 Install Mail Client
     [Documentation]         Install evolution debian package
@@ -26,18 +26,18 @@ Install Chromium
 Open Chromium Mail Link
     [Documentation]         Affirm the mailto chromium link works and opens evolution
     Start Application    /snap/bin/chromium wiki.ubuntu.com/DesktopTeam/TestPlans/Chromium
-    PlatformVideoInput.Match Text    Attachments
+    Match Text    Attachments
 
     ${combo}    Create List    Control_L    f
-    PlatformHid.Keys Combo    ${combo}
-    PlatformHid.Type String    mailto
+    Keys Combo    ${combo}
+    Type String    mailto
     ${esc}    Create List    Escape
     ${ret}    Create List    Return
-    PlatformHid.Keys Combo    ${esc}
-    PlatformHid.Keys Combo    ${ret}
+    Keys Combo    ${esc}
+    Keys Combo    ${ret}
 
 Match Mail Client
     [Documentation]         Ensure evolution is opened
-    PlatformVideoInput.Match Text    From
-    PlatformVideoInput.Match Text    To
-    PlatformVideoInput.Match Text    foobar@nospam.org
+    Match Text    From
+    Match Text    To
+    Match Text    foobar@nospam.org
