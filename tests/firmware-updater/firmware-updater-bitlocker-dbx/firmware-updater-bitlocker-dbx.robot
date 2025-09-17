@@ -1,0 +1,44 @@
+*** Settings ***
+Documentation       Update UEFI dbx with Bitlocker
+
+Resource            ${Z}/../firmware-updater.resource
+
+Test Tags           robot:exit-on-failure    # robocop: off=tag-with-reserved-word
+
+
+*** Variables ***
+${Z}    ${CURDIR}
+
+
+*** Test Cases ***
+Log In
+    [Documentation]    Log in to desktop session
+    Log In
+
+Refresh Firmware Metadata
+    [Documentation]    Fetch the firmware catalog from LVFS
+    Refresh Firmware Metadata
+
+Setup Mock Bitlocker Partition
+    [Documentation]    Setup a mock Bitlocker partition by loopmounting a test image from cryptsetup
+    Setup Mock Bitlocker Partition
+
+Open Firmware Updater
+    [Documentation]    Open the firmware updater application
+    Open Firmware Updater
+
+Update UEFI dbx
+    [Documentation]    Update the dbx database
+    Update UEFI dbx
+
+Confirm Update
+    [Documentation]    Confirm the firmware update
+    Confirm Update
+
+Handle Reboot Prompt
+    [Documentation]    Confirm to reboot the system
+    Handle Reboot Prompt
+
+Wait For Reboot To Finish
+    [Documentation]    Log in after rebooting the machine
+    Log In
