@@ -14,11 +14,11 @@ User Log In
     [Documentation]    Log in a given user with password
     [Arguments]    ${username}    ${password}
     Match Text    ${username}
-    Click Text    ${username}
+    Keys Combo    Return
     Match Text    Password
     Type String    ${password}
     Keys Combo    Return
-    Match    ${Y}/circle-of-friends.png    60
+    BuiltIn.Sleep    5
 
 Clear Terminal
     [Documentation]    Clear terminal from previous commands

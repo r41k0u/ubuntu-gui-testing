@@ -15,9 +15,9 @@ Setup
     [Documentation]         Use rapidocr rather than tesseract-ocr in yarf
     Set Ocr Method    rapidocr
 
-# System Log In
-#     [Documentation]         Log in to desktop environment
-#     User Log In    u    u
+System Log In
+    [Documentation]         Log in to desktop environment
+    User Log In    u    u
 
 Prepare Test Enviroment
     [Documentation]         Prepare test enviroment
@@ -35,6 +35,7 @@ Deny Once
     Start Application    cheese
     Cheese Prompt Is Present
     Press Button    Deny once
+    # The first attempt will spawn 3 prompts
     Cheese Prompt Is Present
     Press Button    Deny once
     Cheese Prompt Is Present
@@ -43,23 +44,21 @@ Deny Once
     Close Application
     BuiltIn.Sleep    2
 
-# Allow Until Logout
-#     [Documentation]         Allow access to camera interface until logout
-#     Start Application    cheese
-#     Cheese Prompt Is Present
-#     Press Button    Allow until logout
-#     Cheese Prompt Is Present
-#     Press Button    Allow until logout
-#     Cheese With Video
-#     Close Application
-#     BuiltIn.Sleep    2
+Allow Until Logout
+    [Documentation]         Allow access to camera interface until logout
+    Start Application    cheese
+    Cheese Prompt Is Present
+    Press Button    Allow until logout
+    Cheese With Video
+    Close Application
+    BuiltIn.Sleep    2
 
-# No Prompt
-#     [Documentation]         Verify no prompt is shown due the "Allow Until Logout"
-#     Start Application    cheese
-#     Cheese With Video
-#     Close Application
-#     BuiltIn.Sleep    2
+No Prompt
+    [Documentation]         Verify no prompt is shown due the "Allow Until Logout"
+    Start Application    cheese
+    Cheese With Video
+    Close Application
+    BuiltIn.Sleep    2
 
 Cleanup Test Enviroment
     [Documentation]         Clean up system state
