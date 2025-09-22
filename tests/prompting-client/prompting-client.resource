@@ -28,10 +28,11 @@ Clear Terminal
 
 Delete Request Rules
     [Documentation]    Delete current request rules for prompting
-    Run Command In Terminal    rm /var/lib/snapd/request-rules.json >> /dev/null || true
+    Run Sudo Command In Terminal    echo '{"action": "remove", "selector": {"interface": "camera"}}' | sudo snap debug api -X POST -H 'Content-Type: application/json' "/v2/interfaces/requests/rules?user-id=$UID"
     Match Text    ${PROMPT}    30
 
 Run Simple Command
+    [Documentation]    Run command in terminal without verifying the exit status
     [Arguments]    ${cmd}
     Type String    ${cmd}
     Keys Combo    Return

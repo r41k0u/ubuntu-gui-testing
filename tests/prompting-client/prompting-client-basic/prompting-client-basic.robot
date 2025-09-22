@@ -19,7 +19,6 @@ Setup
 #     [Documentation]         Log in to desktop environment
 #     User Log In    u    u
 
-
 Prepare Test Enviroment
     [Documentation]         Prepare test enviroment
     Install Snap Package    cheese
@@ -37,7 +36,7 @@ Deny Once
     Cheese Prompt Is Present
     Press Button    Deny once
     Cheese Prompt Is Present
-    Press Button    Deny once    
+    Press Button    Deny once
     Cheese Prompt Is Present
     Press Button    Deny once
     Cheese No Device
