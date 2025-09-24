@@ -13,10 +13,11 @@ ${Y}    ${CURDIR}
 User Log In
     [Documentation]    Log in a given user with password
     [Arguments]    ${username}    ${password}
-    Match Text    ${username}
+    Match Text    ${username}    30
     Keys Combo    Return
-    Match Text    Password
+    Match Text    Password    30
     Type String    ${password}
+    BuiltIn.Sleep    0.5
     Keys Combo    Return
     BuiltIn.Sleep    5
 
@@ -28,8 +29,10 @@ Clear Terminal
 
 Delete Request Rules
     [Documentation]    Delete current request rules for prompting
+    Open Terminal
     Run Sudo Command In Terminal    echo '{"action": "remove", "selector": {"interface": "camera"}}' | sudo snap debug api -X POST -H 'Content-Type: application/json' "/v2/interfaces/requests/rules?user-id=$UID"
     Match Text    ${PROMPT}    30
+    Close Terminal
 
 Run Simple Command
     [Documentation]    Run command in terminal without verifying the exit status
