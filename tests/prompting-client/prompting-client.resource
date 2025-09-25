@@ -47,7 +47,7 @@ Press Button
 
 Cheese Prompt Is Present
     [Documentation]    Find camera prompt for "cheese"
-    Match    ${Y}/generic/cheese_prompt.png    30
+    Match Text    Allow cheese to access your camera?    30
 
 Cheese No Device
     [Documentation]    Find "cheese" application open with no device message

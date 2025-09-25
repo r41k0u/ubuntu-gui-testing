@@ -26,7 +26,6 @@ Prepare Test Enviroment
     Delete Request Rules
     Open Terminal
     Run Sudo Command In Terminal    sudo modprobe v4l2loopback devices=1 video_nr=0 exclusive_caps=1 && sudo snap set system experimental.apparmor-prompting=true
-    # sudo password is still cached from the previous command
     Run Simple Command    gst-launch-1.0 videotestsrc ! videoconvert ! v4l2sink device=/dev/video0
     BuiltIn.Sleep    2
 
