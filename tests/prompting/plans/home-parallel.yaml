@@ -1,0 +1,5 @@
+---
+robot_files:
+  - "tests/prompting/prompting-home-yq-parallel/prompting-home-yq-parallel.robot"
+  - "tests/prompting/prompting-home-yq-parallel-cancellation/prompting-home-yq-parallel-cancellation.robot"
+  - "tests/prompting/prompting-home-yq-firefox-parallel/prompting-home-yq-firefox-parallel.robot"
