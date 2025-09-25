@@ -17,9 +17,7 @@ Log In
 
 Install yq
     [Documentation]    Install the yq snap
-    Open Terminal
-    Run Sudo Command In Terminal    sudo snap install yq
-    Close Terminal
+    Install Snap Package    yq
 
 Enable Prompting
     [Documentation]    Enable prompting
