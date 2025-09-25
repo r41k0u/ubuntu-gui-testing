@@ -60,10 +60,6 @@ Verify Download
     Click LEFT Button On ${Y}/generic/downloads.png
     Match Text    Completed 60
 
-Close Current Window
-    [Documentation]    Close the current window
-    Keys Combo    Alt    F4
-
 Focus Prompt
     [Documentation]    Focus the prompting-client UI
     Move Pointer To ${Y}/generic/shield-icon.png

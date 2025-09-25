@@ -117,3 +117,7 @@ Log In
     Keys Combo    ${ret}
     BuiltIn.Sleep    2
     Match    ${X}/circle-of-friends.png    60
+
+Close Current Window
+    [Documentation]    Close the current window
+    Keys Combo    Alt    F4
