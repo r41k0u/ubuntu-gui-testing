@@ -71,7 +71,7 @@ Name Select
     Match    ${CURDIR}/snapshots/templates/next_btn.jpg
     Click LEFT Button on ${CURDIR}/snapshots/templates/next_btn.jpg
     Move Pointer To (100, 100)
-    Match    ${CURDIR}/snapshots/screens/screen_06.jpg    40
+    Match    ${CURDIR}/snapshots/screens/screen_06.jpg    80
 
 Password Select
     [Documentation]    Enter a password
