@@ -75,12 +75,12 @@ Name Select
 
 Password Select
     [Documentation]    Enter a password
-    Type String    redactedpwd
+    Type String    redactedpwd123
     Sleep    1
     Keys Combo    Tab
     Sleep    1
     Keys Combo    Tab
-    Type String    redactedpwd
+    Type String    redactedpwd123
     Match    ${CURDIR}/snapshots/templates/next_btn.jpg
     Click LEFT Button on ${CURDIR}/snapshots/templates/next_btn.jpg
     Move Pointer To (100, 100)
