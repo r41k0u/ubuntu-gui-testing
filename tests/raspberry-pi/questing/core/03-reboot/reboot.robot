@@ -39,7 +39,7 @@ Login
     [Documentation]    Log in to desktop environment
     Keys Combo    Return
     Sleep    1
-    Type String    redactedpwd
+    Type String    redactedpwd123
     Sleep    1
     Keys Combo    Return
     Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg    20
