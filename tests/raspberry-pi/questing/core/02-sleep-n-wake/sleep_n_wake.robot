@@ -29,7 +29,7 @@ Login Prompt
 
 Desktop
     [Documentation]    Enter desktop environment
-    Type String    redactedpwd
+    Type String    redactedpwd123
     Sleep    1
     Keys Combo    Return
     Match    ${CURDIR}/../rpi-common/screens/big_circle_of_friends.jpg    15
